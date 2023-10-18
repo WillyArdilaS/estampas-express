@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 const SignUp = () => {
     const [idType, setIdType] = useState("");
-    const [idNumber, setIdNumber] = useState();    
+    const [idNumber, setIdNumber] = useState("");    
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [genre, setGenre] = useState("");
@@ -35,16 +35,16 @@ const SignUp = () => {
                 title: 'Las contraseñas no coinciden',
             })
         } else {
-            axios.post('http://localhost:8080/representante/save', {
-                idType: idType, 
-                idNumber: Number(idNumber),
-                name: name,
-                lastName: lastName,
-                genre: genre,
-                role: role,
-                email: email,
-                username: username,
-                password: password  
+            axios.post('http://127.0.0.1:8000/api/register/', {
+                tipoID: idType, 
+                numeroID: Number(idNumber),
+                nombre: name,
+                apellido: lastName,
+                genero: genre,
+                rol: role,
+                correo: email,
+                usuario: username,
+                contrasenia: password  
             })
             .then(() => {
                 Swal.fire({
@@ -53,7 +53,7 @@ const SignUp = () => {
                 });
 
                 setIdType("");
-                setIdNumber();
+                setIdNumber("");
                 setName("");
                 setLastName("")
                 setGenre("");
