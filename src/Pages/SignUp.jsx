@@ -35,17 +35,17 @@ const SignUp = () => {
                 title: 'Las contraseñas no coinciden',
             })
         } else {
-            axios.post('http://127.0.0.1:8000/api/register/', {
-                tipoID: idType, 
-                numeroID: Number(idNumber),
+            axios.post('http://127.0.0.1:8000/api/registro/', null, { params: {
+                tipoid: idType, 
+                numid: Number(idNumber),
                 nombre: name,
                 apellido: lastName,
                 genero: genre,
                 rol: role,
                 correo: email,
                 usuario: username,
-                contrasenia: password  
-            })
+                contrasena: password  
+            }})
             .then(() => {
                 Swal.fire({
                     icon: 'success',
@@ -140,12 +140,12 @@ const SignUp = () => {
                                     text-black font-medium font-title placeholder-slate-400" onChange={(e) => setRole(e.target.value)} required>
                                 <div className="flex">
                                     <label htmlFor="Client" className="mr-2">Cliente</label>
-                                    <input type="radio" name="typePosition" id="begginer" value="BEGGINER" />
+                                    <input type="radio" name="typePosition" id="cliente" value="cliente" />
                                 </div>
 
                                 <div className="flex">
                                     <label htmlFor="Artist" className="mr-2">Artista</label>
-                                    <input type="radio" name="typePosition" id="junior" value="JUNIOR" />
+                                    <input type="radio" name="typePosition" id="artista" value="artista" />
                                 </div>
                             </fieldset>
                         </div>

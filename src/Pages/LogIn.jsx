@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 const LogIn = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
 
     const navigate = useNavigate()
 
@@ -16,50 +17,37 @@ const LogIn = () => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        if(!username || !password) {
+        if(!username || !password || !role) {
             Swal.fire({
                 icon: 'info',
                 title: 'Faltan campos por llenar',
             });
             
         } else {
-            axios.post('http://localhost:8080/api/auth/database_login', null, {params:{username: username, password: password}})
+            axios.get('http://127.0.0.1:8000/api/login', {params:{usuario: username, contrasena: password, rol: role}})
             .then(res => {
-                if(res.data.length == 0) {
+                if(res.data.mensaje != "Login exitoso.") {
                     Swal.fire({
                         icon: 'error',
-                        title: 'El usuario no está registrado',
-                        text: 'Por favor registra primero tu cuenta.',
+                        title: res.data,
                     });
-                   
                 } else {
-                    if(password !== res.data[0].contrasena) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Contraseña incorrecta',
-                            text: 'Por favor verifica nuevamente tu contraseña',
-                        });
-                    } else{
-                        const role = res.data["role"]
-                        console.log(res.data["role"]);
-         
-                        if(role == "R_Cliente") {
-                            sessionStorage.setItem("role", "Cliente");
-                        } else if(role == "R_Artista") {
-                            sessionStorage.setItem("role", "Artista");
-                        } else {
-                            sessionStorage.setItem("role", "Admin");
-                        }
-        
-                        Swal.fire({
-                            icon: 'success',
-                            title: `Bienvenid@ ${username}` ,
-                        });
-        
-                        navigate("/Home", {
-                            replace: ("/LogIn", true)
-                        });
+                    if(role == "cliente") {
+                        sessionStorage.setItem("role", "cliente");
+                    } else if(role == "artista") {
+                        sessionStorage.setItem("role", "artista");
+                    } else {
+                        sessionStorage.setItem("role", "admin");
                     }
+    
+                    Swal.fire({
+                        icon: 'success',
+                        title: `Bienvenid@ ${username}` ,
+                    });
+    
+                    navigate("/Home", {
+                        replace: ("/LogIn", true)
+                    });
                 }
 
             })
@@ -91,9 +79,20 @@ const LogIn = () => {
                     <div id="form-password" className="flex justify-center">
                         <label htmlFor="password"></label>
                         <input type="password" name="password" id="password" placeholder="Contraseña" value={password} required
-                            className="w-3/4 px-3 py-2 rounded-md bg-white shadow-md text-black font-medium font-title placeholder-slate-400" 
+                            className="w-3/4 mb-6 px-3 py-2 rounded-md bg-white shadow-md text-black font-medium font-title placeholder-slate-400" 
                             onChange={(e) => setPassword(e.target.value)}/>
                     </div>
+
+                    <div id="form-role" className="flex justify-center">
+                            <label htmlFor="role"></label>
+                            <select name="role" id="role" value={role} className="w-3/4 px-3 py-2 rounded-md bg-white shadow-md text-black font-medium font-title" 
+                            onChange={(e) => setRole(e.target.value)} required>
+                                <option value="" disabled hidden> Rol </option>
+                                <option value="cliente">Cliente</option>
+                                <option value="artista">Artista</option>
+                                <option value="admin">Admin</option>
+                            </select> 
+                        </div>
 
                     <section className="flex justify-center pb-10 mx-10 mt-12">
                         <input type="button" id="button-signIn" value="Iniciar sesión" onClick={handleLogin}
