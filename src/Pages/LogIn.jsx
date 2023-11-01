@@ -32,6 +32,7 @@ const LogIn = () => {
                         title: res.data,
                     });
                 } else {
+                    sessionStorage.setItem("username", username);
                     if(role == "cliente") {
                         sessionStorage.setItem("role", "cliente");
                     } else if(role == "artista") {
@@ -65,7 +66,7 @@ const LogIn = () => {
     return (
        <main className="container flex justify-center mx-auto mt-36 2xl:mt-48">
             <article id="userSign" className={`w-3/5 2xl:w-1/5 xl:w-1/4 lg:w-1/3 md:w-2/5 sm:w-1/2 absolute rounded-t-2xl shadow-xl rounded-b-xl bg-gradient-to-b 
-            from-lightBlue to-darkBlue `}>
+            from-lightBlue to-darkBlue`}>
                 <h1 id="appTitle" className="mt-10 mb-16 text-white font-extrabold font-title text-4xl text-center">EstampasExpress</h1>
 
                 <form id="userSignIn-form" className="mt-6">
