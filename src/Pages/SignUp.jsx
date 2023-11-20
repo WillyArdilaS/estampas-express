@@ -10,6 +10,7 @@ const SignUp = () => {
     const [lastName, setLastName] = useState("");
     const [genre, setGenre] = useState("");
     const [role, setRole] = useState("");
+    const [adress, setAdress] = useState("");
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -24,7 +25,7 @@ const SignUp = () => {
     const handleCreateUser = (e) => {
         e.preventDefault();
 
-        if(!username || !lastName || !username || !email || !password || !passwordConfirmation) {
+        if(!idType || !idNumber || !name || !lastName || !genre || !role || !username || !email || !password || !passwordConfirmation) {
             Swal.fire({
                 icon: 'info',
                 title: 'Faltan campos por llenar',
@@ -42,6 +43,7 @@ const SignUp = () => {
                 apellido: lastName,
                 genero: genre,
                 rol: role,
+                direccion: adress,
                 correo: email,
                 usuario: username,
                 contrasena: password  
@@ -58,6 +60,7 @@ const SignUp = () => {
                 setLastName("")
                 setGenre("");
                 setRole("");
+                setAdress("");
                 setEmail("");
                 setUsername("");
                 setPassword("");
@@ -116,17 +119,17 @@ const SignUp = () => {
                             <fieldset value={genre} className="flex justify-around mb-6 px-3 py-2 rounded-md bg-white shadow-md text-black font-medium font-title 
                             placeholder-slate-400" onChange={(e) => setGenre(e.target.value)} required>
                                 <div className="flex">
-                                    <label htmlFor="M" className="mr-2"> Hombre </label>
+                                    <label htmlFor="male" className="mr-2"> Hombre </label>
                                     <input type="radio" name="genre" id="male" value="M" />
                                 </div>
 
                                 <div  className="flex">
-                                    <label htmlFor="F" className="mr-2"> Mujer </label>
+                                    <label htmlFor="female" className="mr-2"> Mujer </label>
                                     <input type="radio" name="genre" id="female" value="F"/>
                                 </div>
 
                                 <div  className="flex">
-                                    <label htmlFor="O" className="mr-2"> Otro </label>
+                                    <label htmlFor="other" className="mr-2"> Otro </label>
                                     <input type="radio" name="genre" id="other" value="O"/>
                                 </div>
                             </fieldset>
@@ -139,18 +142,29 @@ const SignUp = () => {
                             <fieldset value={role} className="flex justify-around mb-6 px-3 py-2 bg-white shadow-md rounded-md  
                                     text-black font-medium font-title placeholder-slate-400" onChange={(e) => setRole(e.target.value)} required>
                                 <div className="flex">
-                                    <label htmlFor="Client" className="mr-2">Cliente</label>
-                                    <input type="radio" name="typePosition" id="cliente" value="cliente" />
+                                    <label htmlFor="client" className="mr-2">Cliente</label>
+                                    <input type="radio" name="typePosition" id="client" value="cliente" />
                                 </div>
 
                                 <div className="flex">
-                                    <label htmlFor="Artist" className="mr-2">Artista</label>
-                                    <input type="radio" name="typePosition" id="artista" value="artista" />
+                                    <label htmlFor="artist" className="mr-2">Artista</label>
+                                    <input type="radio" name="typePosition" id="artist" value="artista" />
                                 </div>
                             </fieldset>
                         </div>
                     </div>
 
+                    {
+                        role == "cliente" ? (
+                            <div id="form-email" className="flex justify-center">
+                                <label htmlFor="adress"></label>
+                                <input type="text" name="adress" id="adress" value={adress} placeholder="Dirección" className="w-4/5 mb-6 px-3 py-2 rounded-md bg-white 
+                                shadow-md text-black font-medium font-title placeholder-slate-400" onChange={(e) => setAdress(e.target.value)} required/>
+                            </div>
+                        ) : false 
+                    }
+                    
+                    
                     <div id="form-email" className="flex justify-center">
                         <label htmlFor="email"></label>
                         <input type="email" name="email" id="email" value={email} placeholder="Correo electrónico" className="w-4/5 mb-6 px-3 py-2 rounded-md bg-white 

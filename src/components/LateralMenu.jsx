@@ -43,7 +43,7 @@ const LateralMenu = () => {
         if(sessionStorage.getItem("role") == "cliente") {
             return(
                 <>
-                    <button id="button-signIn" value="products" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 
+                    <button id="button-signIn" value="products" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 
                     rounded-lg bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`}
                     onClick={goToCatalog}> 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -55,7 +55,7 @@ const LateralMenu = () => {
                         <span className="ml-2"> Ver camisetas </span> 
                     </button>
 
-                    <button id="button-shoppingCart" value="shoppingCart" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 border-white border-x-2 border-y-2 
+                    <button id="button-shoppingCart" value="shoppingCart" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 border-white border-x-2 border-y-2 
                     rounded-lg bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`} 
                     onClick={goToCart} > 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -69,7 +69,7 @@ const LateralMenu = () => {
         } else if(sessionStorage.getItem("role") == "artista") {
             return(
                 <>
-                    <button id="button-qualificationsRV" value="qualificationsRV" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 
+                    <button id="button-qualificationsRV" value="qualificationsRV" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 
                     rounded-lg bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`}
                     onClick={goToStamps}> 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -79,7 +79,7 @@ const LateralMenu = () => {
                         <span className="ml-2"> Administrar estampas </span> 
                     </button>
 
-                    <button id="button-payroll" value="payroll" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 rounded-lg
+                    <button id="button-payroll" value="payroll" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 rounded-lg
                     bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`}
                     onClick={goToSales}> 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -90,7 +90,7 @@ const LateralMenu = () => {
                         <span className="ml-2"> Ver ventas </span> 
                     </button>
 
-                    <button id="button-statistics" value="statistics" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 border-white border-x-2 border-y-2 
+                    <button id="button-statistics" value="statistics" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 border-white border-x-2 border-y-2 
                     rounded-lg bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`}
                     onClick={goToStatistics}> 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -103,7 +103,7 @@ const LateralMenu = () => {
         } else if(sessionStorage.getItem("role") == "admin") {
             return(
                 <>
-                    <button id="button-signUpRV" value="signUpRV" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 rounded-lg
+                    <button id="button-signUpRV" value="signUpRV" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 rounded-lg
                     bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`}
                     onClick={goToUsers}> 
                         <svg className="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -113,7 +113,7 @@ const LateralMenu = () => {
                         <span className="ml-2"> Administrar usuarios</span> 
                     </button>
 
-                    <button id="button-infoRV" value="infoRV" className={`flex items-center px-2 2xl:px-4 py-2 2xl:py-3 border-white border-x-2 border-y-2 rounded-lg 
+                    <button id="button-infoRV" value="infoRV" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 border-white border-x-2 border-y-2 rounded-lg 
                     bg-white shadow-lg text-black text-sm font-semibold font-title hover:cursor-pointer hover:bg-transparent hover:text-white transition-colors`}
                     onClick={goToSettings}> 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -134,13 +134,13 @@ const LateralMenu = () => {
 
     return (
         <article className="fixed w-1/6 top-0 left-0 h-full bg-gradient-to-b from-lightBlue to-darkBlue">
-            <img src="https://res.cloudinary.com/dn1k0drir/image/upload/v1679111733/NatAmE/Logo_oeniv6.png" alt="Logo de la app" id="appLogo" className="w-36 2xl:w-56 mx-auto" />
+            <h1 id="appTitle" className="mt-10 mb-4 text-white font-extrabold font-title text-3xl text-center">EstampasExpress</h1>
 
             <h1 className="text-center text-white text-base 2xl:text-lg font-medium font-subtitle"> {
             sessionStorage.getItem("username") + " - " + sessionStorage.getItem("role")} </h1>
 
-            <section className="flex flex-col justify-between items-center h-3/4 mt-6">
-                <div className="flex flex-col justify-start items-center h-1/2">
+            <section className="flex flex-col justify-between items-center h-5/6">
+                <div className="flex flex-col justify-start items-center h-1/2 mt-14">
                     { renderButtons() }
                 </div>
                 
