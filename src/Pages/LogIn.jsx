@@ -32,23 +32,47 @@ const LogIn = () => {
                         title: res.data,
                     });
                 } else {
-                    sessionStorage.setItem("username", username);
-                    if(role == "cliente") {
-                        sessionStorage.setItem("role", "cliente");
-                    } else if(role == "artista") {
-                        sessionStorage.setItem("role", "artista");
-                    } else {
-                        sessionStorage.setItem("role", "admin");
+                    let usuario = {
+                        tipoID: "",
+                        numID: "",
+                        username: username,
+                        role: ""
                     }
-    
-                    Swal.fire({
-                        icon: 'success',
-                        title: `Bienvenid@ ${username}` ,
-                    });
-    
-                    navigate("/Home", {
-                        replace: ("/LogIn", true)
-                    });
+
+                    if(role == "cliente") {
+                        usuario.role = "cliente";
+                    } else if(role == "artista") {
+                        usuario.role = "artista";
+                    } else {
+                        usuario.role = "admin";
+                    }
+
+                    // Obtener tipoID y numID
+                    axios.get('http://127.0.0.1:8000/api/usuarioID', {params:{usuario: username}})
+                    .then(res => {
+                        usuario.tipoID = res.data.tipoid;
+                        usuario.numID = res.data.numid;
+
+                        //Login exitoso
+                        sessionStorage.setItem("usuario", JSON.stringify(usuario));
+        
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Bienvenid@ ${username}` ,
+                        });
+        
+                        navigate("/Home", {
+                            replace: ("/LogIn", true)
+                        });
+                    })
+                    .catch(err => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error al ingresar',
+                        })
+        
+                        console.log(err); 
+                    })
                 }
 
             })
@@ -66,7 +90,7 @@ const LogIn = () => {
     return (
        <main className="container flex justify-center mx-auto mt-36 2xl:mt-48">
             <article id="userSign" className={`w-3/5 2xl:w-1/5 xl:w-1/4 lg:w-1/3 md:w-2/5 sm:w-1/2 absolute rounded-t-2xl shadow-xl rounded-b-xl bg-gradient-to-b 
-            from-lightBlue to-darkBlue`}>
+            from-lightBlue to-darkBlue animate-fade-down animate-once animate-ease-out`}>
                 <h1 id="appTitle" className="mt-10 mb-16 text-white font-extrabold font-title text-4xl text-center">EstampasExpress</h1>
 
                 <form id="userSignIn-form" className="mt-6">

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const LateralMenu = () => {
+    const usuario = JSON.parse(sessionStorage.getItem("usuario"));
     const navigate = useNavigate();
 
     const goToCatalog=()=>{
@@ -34,13 +35,13 @@ const LateralMenu = () => {
     const handleLogOut = () => {
         alert("Sesión cerrada");
 
-        sessionStorage.setItem("role", "");
-        sessionStorage.setItem("username", "");
+        sessionStorage.removeItem("usuario")
+        sessionStorage.removeItem("camiseta");
         navigate("/", { replace: true});
     }
 
     const renderButtons = () => {
-        if(sessionStorage.getItem("role") == "cliente") {
+        if(usuario.role == "cliente") {
             return(
                 <>
                     <button id="button-signIn" value="products" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 
@@ -66,7 +67,7 @@ const LateralMenu = () => {
                     </button>
                 </>
             );
-        } else if(sessionStorage.getItem("role") == "artista") {
+        } else if(usuario.role == "artista") {
             return(
                 <>
                     <button id="button-qualificationsRV" value="qualificationsRV" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 
@@ -100,7 +101,7 @@ const LateralMenu = () => {
                     </button>
                 </>
             );
-        } else if(sessionStorage.getItem("role") == "admin") {
+        } else if(usuario.role == "admin") {
             return(
                 <>
                     <button id="button-signUpRV" value="signUpRV" className={`flex items-center w-full px-2 2xl:px-4 py-2 2xl:py-3 mb-12 border-white border-x-2 border-y-2 rounded-lg
@@ -137,7 +138,7 @@ const LateralMenu = () => {
             <h1 id="appTitle" className="mt-10 mb-4 text-white font-extrabold font-title text-3xl text-center">EstampasExpress</h1>
 
             <h1 className="text-center text-white text-base 2xl:text-lg font-medium font-subtitle"> {
-            sessionStorage.getItem("username") + " - " + sessionStorage.getItem("role")} </h1>
+            usuario.username + " - " + usuario.role} </h1>
 
             <section className="flex flex-col justify-between items-center h-5/6">
                 <div className="flex flex-col justify-start items-center h-1/2 mt-14">

@@ -21,10 +21,10 @@ module.exports = {
         'paragraph': ['Numans', 'sans-serif']
       }
     },
-    scale: {
-      '-100': '-1',
-    }
+    
   },
   
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animated')
+  ],
 }

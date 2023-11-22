@@ -79,7 +79,8 @@ const SignUp = () => {
 
     return (
         <main className="container flex justify-center mx-auto mt-12">
-            <article id="userRegister" className="w-2/5 2xl:w-1/3 absolute rounded-2xl bg-gradient-to-b from-lightBlue to-darkBlue">
+            <article id="userRegister" className="w-2/5 2xl:w-1/3 absolute rounded-2xl bg-gradient-to-b from-lightBlue to-darkBlue animate-fade-down 
+            animate-once animate-ease-out">
                 <h1 id="appTitle" className="mt-10 mb-16 text-white font-extrabold font-title text-4xl text-center">EstampasExpress</h1>
                 
                 <form action="" id="userRegister-form" className="mt-6">
