@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const LateralMenu = () => {
     const usuario = JSON.parse(sessionStorage.getItem("usuario"));
@@ -13,7 +14,7 @@ const LateralMenu = () => {
     }
 
     const goToStamps = () => {
-        navigate("/Stamps");
+        navigate("/Home");
     }
 
     const goToSales = () => {
@@ -33,7 +34,10 @@ const LateralMenu = () => {
     }
 
     const handleLogOut = () => {
-        alert("Sesión cerrada");
+        Swal.fire({
+            icon: 'success',
+            title: `Sesión cerrada` ,
+        });
 
         sessionStorage.removeItem("usuario")
         sessionStorage.removeItem("camiseta");

@@ -139,7 +139,7 @@ const TshirtDetail = () => {
                                     2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/></svg>
                                     <input type="number" name="quantity" id="quantity" placeholder="Cantidad" min={0} className="w-2/5 ml-1 px-2 py-2 rounded-md 
                                     bg-white shadow-md text-black font-medium font-paragraph text-xs placeholder-slate-400 border-black border-x-2 border-y-2" 
-                                    onChange={(e) => setQuantity(Number(e.target.value))}required/>
+                                    onChange={(e) => setQuantity(Number(e.target.value))} required/>
                                 </div>
 
                                 <button id="button-addProduct" className="w-48 inline-flex justify-center items-center mt-12 px-5 py-3 bg-yellow shadow-md text-white 
